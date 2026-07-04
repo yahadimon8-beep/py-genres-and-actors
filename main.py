@@ -1,8 +1,9 @@
 import init_django_orm  # noqa: F401
+from django.db.models import QuerySet
 from db.models import Genre, Actor
 
 
-def main():
+def main() -> QuerySet:
     # 1. Створення даних (Create)
     Genre.objects.create(name="Western")
     Genre.objects.create(name="Action")
@@ -17,8 +18,12 @@ def main():
 
     # 2. Оновлення даних (Update)
     Genre.objects.filter(name="Drama").update(name="Drama")
-    Actor.objects.filter(first_name="George", last_name="Clooney").update(last_name="Clooney")
-    Actor.objects.filter(first_name="Keanu", last_name="Reeves").update(first_name="Keanu", last_name="Reeves")
+    Actor.objects.filter(
+        first_name="George", last_name="Clooney"
+    ).update(last_name="Clooney")
+    Actor.objects.filter(
+        first_name="Keanu", last_name="Reeves"
+    ).update(first_name="Keanu", last_name="Reeves")
 
     # 3. Видалення даних (Delete)
     Genre.objects.filter(name="Action").delete()
