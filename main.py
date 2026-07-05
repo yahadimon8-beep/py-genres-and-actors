@@ -4,6 +4,8 @@ from db.models import Genre, Actor
 
 
 def main() -> QuerySet[Actor]:
+    Genre.objects.all().delete()
+    Actor.objects.all().delete()
     # Create
     Genre.objects.create(name="Western")
     Genre.objects.create(name="Action")
